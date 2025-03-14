@@ -1,51 +1,56 @@
-\documentclass[a4paper,12pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{geometry}
-\usepackage{setspace}
-\usepackage{titlesec}
-\usepackage{xcolor}
-\usepackage{booktabs}
-\usepackage{helvet}
-\usepackage{mathptmx} % Adiciona a fonte Times New Roman
-\usepackage{fancyhdr} % Adiciona o pacote fancyhdr para customizar cabeçalhos e rodapés
-\usepackage{apacite} % Adiciona o pacote apacite para formatação APA
-\bibliographystyle{apacite} % Define o estilo de citação para APA
-\geometry{a4paper, left=3cm, right=2cm, top=3cm, bottom=2cm}
-\renewcommand{\baselinestretch}{1.5}
-\titleformat{\section}{\normalfont\bfseries\uppercase}{\thesection}{1em}{}
-\begin{document}
-\fontsize{12pt}{14pt}\selectfont % Define o tamanho da fonte para 12pt
+% Documento principal do modelo de artigo acadêmico do IFRS/POA
+% Autor: Rodrigo Prestes Machado
+% URL: https://github.com/rodrigoprestesmachado/tcc
+% Licença: CC0 1.0 Universal
+\documentclass[
+	article,			% indica que é um artigo acadêmico
+	11pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no recto. Oposto a twoside
+	a4paper,			% tamanho do papel.
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+]{abntex2}
 
-\pagestyle{fancy} % Define o estilo de página como fancy
-\fancyhf{} % Limpa todos os cabeçalhos e rodapés
-\fancyfoot[R]{\thepage} % Adiciona o número da página no canto inferior direito
-\renewcommand{\headrulewidth}{0pt} % Remove a linha do cabeçalho
-\renewcommand{\footrulewidth}{0pt} % Remove a linha do rodapé
+% Pacotes básicos para esse template
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNTtushy
+
+% Pacotes úteis
+\usepackage{tabularx}
+
+\begin{document}
 
 \begin{center}
-    {\LARGE Título do Artigo}\\[0.8cm]
+    {\LARGE Título do Trabalho de Conslusão de Curso}\\[0.8cm]
     {\large Trabalho de Conclusão do Curso}\\
     {\large Tecnólogo em Sistemas para Internet}\\[1cm]
     {\large Nome do estudante}\\
     Orientador(a): Nome do Coorientador\\
     Coorientador(a): Nome do Orientador\\[0.8cm]
-    \textit{1Instituto Federal de Educação, Ciência e Tecnologia do Rio
+    \textit{1 Instituto Federal de Educação, Ciência e Tecnologia do Rio
     Grande do Sul (IFRS)\\
     Campus Porto Alegre\\
     Av Cel Vicente, 281, Porto Alegre – RS – Brasil}\\
     e-mail\_aluno, e-mail\_coorientador, e-mail\_orientador
 \end{center}
 
-\section*{RESUMO}
+\section*{Resumo}
 Parágrafo único, contendo no máximo 250 palavras acompanhado de 3 a 5
 palavras-chave, primeira letra maiúscula, separadas por ponto, escrita em
 Arial, 12 pt, espaçamento simples e parágrafo justificado.
 
 \textcolor{blue}{
-O resumo deve apresentar de forma clara o que foi feito, como foi feito e quais
-foram os principais achados da pesquisa. Inicialmente, é fundamental
+Dicas: O resumo deve apresentar de forma clara o que foi feito, como foi feito e
+quais foram os principais achados da pesquisa. Inicialmente, é fundamental
 contextualizar o estudo, explicando sua motivação e a metodologia adotada. Em
 seguida, deve-se resumir os principais resultados, evidenciando a contribuição
 do trabalho. Por exemplo, um estudo pode ter desenvolvido um sistema Web para
@@ -58,9 +63,9 @@ evitando informações secundárias ou referências, garantindo que qualquer lei
 compreenda rapidamente a relevância do estudo.
 }
 
-\noindent\textbf{Palavras-Chave:} Palavra-Chave. Palavra-Chave. Palavra-Chave.
+\noindent\textbf{Palavras-Chave:} TCC, Latex, ABNT e IFRS.
 
-\section{INTRODUÇÃO}
+\section{Introdução}
 
 O artigo deve possuir entre 7 (sete) e 10 (dez) páginas para o TCC1 e 10
 (dez) e 15 (quinze) páginas para o TCC2, incluindo resumo e referências na
@@ -71,20 +76,21 @@ O documento deve seguir as normas da ABNT vigentes: estar em tamanho A4, com
 formatação de margens superior e esquerda de 3cm e a inferior e direita 2cm.
 
 \textcolor{blue}{
-A Introdução deve convencer o leitor sobre a relevância do estudo, apresentando
-de forma objetiva o problema a ser resolvido, as soluções existentes, suas
-limitações e o que o trabalho pretende alcançar. Deve-se citar as principais
-publicações científicas que fundamentam a pesquisa, incluindo estudos recentes,
-sem exagerar na quantidade ou incluir referências irrelevantes. A escrita deve
-ser clara e concisa, evitando longas contextualizações desnecessárias.
-A estrutura deve seguir um fluxo lógico, indo do geral para o específico,
-conduzindo o leitor naturalmente até os objetivos e hipóteses, que devem ser
-destacados ao final da seção. Além disso, é essencial evitar expressões
-exageradas como "inovador" ou "revolucionário", garantindo um tom acadêmico
-adequado e alinhado ao escopo do periódico.
+Dicas: A Introdução deve convencer o leitor sobre a relevância do estudo,
+apresentando de forma objetiva o problema a ser resolvido, as soluções
+existentes, suas limitações e o que o trabalho pretende alcançar. Deve-se citar
+as principais publicações científicas que fundamentam a pesquisa, incluindo
+estudos recentes, sem exagerar na quantidade ou incluir referências
+irrelevantes. A escrita deve ser clara e concisa, evitando longas
+contextualizações desnecessárias. A estrutura deve seguir um fluxo lógico, indo
+do geral para o específico, conduzindo o leitor naturalmente até os objetivos e
+hipóteses, que devem ser destacados ao final da seção. Além disso, é essencial
+evitar expressões exageradas como "inovador" ou "revolucionário", garantindo um
+tom acadêmico adequado e alinhado ao escopo do periódico.
 }
 
-\section{REFERENCIAL TEÓRICO}
+\section{Referencial Teórico}
+
 O corpo do texto do artigo deve estar escrito em Arial, 12 pt, com espaçamento
 1,5 e parágrafo justificado.
 
@@ -93,17 +99,16 @@ autores do texto. As citações diretas com mais de 3 linhas serão digitadas em
 parágrafo isolado, com fonte Arial, 11 pt, espaçamento simples, parágrafo
 justificado e recuo de 4cm da margem esquerda.
 
-\begin{quote}
-\setstretch{1.0}
-\leftskip=4cm
-\rightskip=-1cm
-\noindent\fontsize{10pt}{12pt}\selectfont
+\begin{flushright}
+    \begin{minipage}{0.8\textwidth}
+\fontsize{10}{12}\selectfont
 As citações diretas destacadas do corpo do texto, com mais de três linhas,
 devem ser configuradas em Fonte Arial, Tamanho 10, espaçamento simples entre
 linhas e de 0,0 entre parágrafos, sem recuo no início dos parágrafos, mas com
 recuo de 4 cm à esquerda. Antes e depois da citação, deve haver um espaço de
 parágrafo com a mesma configuração de fonte e espaçamento da citação destacada.
-\end{quote}
+    \end{minipage}
+\end{flushright}
 
 As citações diretas devem ter a indicação de autoria entre parênteses, em letras
 maiúsculas e minúsculas, conforme orienta a ABNT 10250/2023.
@@ -113,20 +118,72 @@ decorrer do texto, fonte Arial, tamanho 10 pt, espaçamento simples e parágrafo
 justificado. As notas de rodapé devem ser utilizadas apenas como elemento
 explicativo ou links para urls, e não para colocar referências de obras.
 
-Figuras devem ser inseridas no corpo do texto. Na Figura 1 tem-se um exemplo de
-apresentação.
+Figuras devem ser inseridas no corpo do texto. Na Figura \ref{fig:figura} tem-se
+um exemplo de apresentação.
 
 \begin{figure}[h]
     \centering
     \caption{Exemplo de Figura}
     \label{fig:figura}
     \includegraphics[width=0.4\textwidth]{imgs/fig.png}
+    \fonte{Fonte: Freepik (2025).}
 \end{figure}
 
+As tabelas são confeccionadas com o objetivo de apresentar resultados numéricos
+e valores comparativos tratados estatisticamente e seguem as Normas Tabulares do
+IBGE:
+
+\begin{table}[h]
+    \centering
+    \caption{Exemplo de tabela}
+    \label{tab:tabela}
+    \setlength{\tabcolsep}{16pt}
+    \begin{tabular}{l c c}
+        \toprule
+        \textbf{Faixa etária} & \textbf{Quantitativo} & \textbf{\%} \\
+        \midrule
+        17 a 22 anos & 33  & 30   \\
+        23 a 28 anos & 93  & 50   \\
+        29 a 35 anos & 40  & 10   \\
+        36 a 40 anos & 21  & 10   \\
+        \midrule
+        \textbf{Total} & \textbf{187} & \textbf{100,0} \\
+        \bottomrule
+    \end{tabular}
+    \fonte{IBGE (2012, p. 5).}
+\end{table}
+
+Os quadros são identificados por apresentarem dados textuais, o que os
+diferencia das tabelas. Devem estar localizados o mais próximo possível do texto
+a que se referem e podem ser esquemáticos, comparativos ou descritivos, com ou
+sem indicação de dados numéricos. No Quadro \ref{quad:quadro} tem-se um exemplo de apresentação.
+
+\begin{table}[h]
+    \centering
+    \caption{Exemplo de quadro}
+    \label{quad:quadro}
+    \renewcommand{\arraystretch}{1.3} % Aumenta o espaçamento entre linhas
+    \setlength{\tabcolsep}{12pt} % Ajusta o espaçamento entre colunas
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Gênero Textual} & \textbf{Número de Livros} \\
+        \hline
+        Poesia   & 12 \\
+        \hline
+        Romance  & 5  \\
+        \hline
+        Crônica  & 8  \\
+        \hline
+        Suspense & 15 \\
+        \hline
+    \end{tabular}
+    \fonte{Dados do Autor (2025).}
+\end{table}
+
 \textcolor{blue}{
-Para construir um referencial teórico, o estudante deve revisar a literatura,
-abordando conceitos fundamentais, trabalhos acadêmicos e/ou sistemas similares
-ao seu estudo. É essencial incluir trabalhos relacionados, comparando
+Dicas: Para construir um referencial teórico, o estudante deve revisar a
+literatura, abordando conceitos fundamentais, trabalhos acadêmicos e/ou sistemas
+similares ao seu estudo. É essencial incluir trabalhos relacionados, comparando
 metodologias e identificando limitações, além de analisar outros sistemas
 existentes, destacando suas funcionalidades e diferenciais. A organização do
 referencial deve seguir uma progressão lógica, do geral para o específico,
@@ -136,7 +193,7 @@ demonstrando a lacuna na pesquisa e  justificando a relevância do estudo.
 \section{Metologia}
 
 \textcolor{blue}{
-A Metodologia deve incluir o desenvolvimento do sistema, detalhando sua
+Dicas: A Metodologia deve incluir o desenvolvimento do sistema, detalhando sua
 implementação de forma clara e objetiva. Caso necessário, os requisitos
 funcionais e não funcionais podem ser apresentados para contextualizar o
 funcionamento do sistema e justificar as escolhas técnicas. Além disso,
@@ -151,7 +208,7 @@ os requisitos definidos.
 \section{Resultados e Discussão}
 
 \textcolor{blue}{
-A seção de Resultados e Discussão deve apresentar os dados obtidos na
+Dicas: A seção de Resultados e Discussão deve apresentar os dados obtidos na
 verificação e/ou validação do sistema, destacando aqueles mais relevantes para
 responder às perguntas e atender aos objetivos da pesquisa. A organização dos
 resultados deve seguir uma ordem lógica, alinhada à Metodologia, garantindo
@@ -167,18 +224,19 @@ pesquisas futuras, sempre com embasamento nos dados apresentados.
 \section{Considerações finais}
 
 \textcolor{blue}{
-As considerações finais deve destacar como o trabalho contribui para o avanço do
-conhecimento na área, indo além da simples repetição do resumo ou listagem de
-resultados. Essa seção deve apresentar uma justificativa científica clara,
-indicando a relevância dos achados e suas possíveis aplicações ou extensões.
-Além disso, é recomendado sugerir pesquisas futuras e experimentos
+Dias: As considerações finais devem destacar como o trabalho contribui para o
+avanço do conhecimento na área, indo além da simples repetição do resumo ou
+listagem de resultados. Essa seção deve apresentar uma justificativa científica
+clara, indicando a relevância dos achados e suas possíveis aplicações ou
+extensões. Além disso, é recomendado sugerir pesquisas futuras e experimentos
 complementares que possam aprofundar os resultados obtidos. As conclusões podem
 ser tanto gerais quanto específicas, sempre alinhadas aos objetivos
 estabelecidos na introdução, garantindo uma síntese coerente e impactante do
-estudo \cite{tanenbaum2023redes}.
+estudo \cite{Elsevier2025}.
 }
 
-\bibliography{referencias} % As referências serão formatadas de acordo com o estilo APA
-
+% Referências
+\bibstyle{abntex2-alf}
+\bibliography{referencias}
 
 \end{document}
