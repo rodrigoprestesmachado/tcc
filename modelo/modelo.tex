@@ -29,8 +29,10 @@
 \usepackage{tabularx}
 \usepackage{square} % Pacote para quadros ABNT
 
-\pagestyle{fancy}
+% Configurações do pacote fancyhdr
+\renewcommand{\headrulewidth}{0pt} % Remove a linha no topo da página
 \fancyhf{}
+\pagestyle{fancy}
 \fancyfoot[R]{\thepage}
 
 \begin{document}
