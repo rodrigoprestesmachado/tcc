@@ -23,12 +23,19 @@
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
 \usepackage[alf]{abntex2cite}	% Citações padrão ABNTtushy
+\usepackage{fancyhdr}           % Pacote para cabeçalhos e rodapés
 
 % Pacotes úteis
 \usepackage{tabularx}
 \usepackage{square} % Pacote para quadros ABNT
 
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+
 \begin{document}
+\thispagestyle{fancy}
+\pagestyle{fancy}
 
 \begin{center}
     {\LARGE Título do Trabalho de Conslusão de Curso}\\[0.8cm]
