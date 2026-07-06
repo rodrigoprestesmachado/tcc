@@ -13,5 +13,9 @@
 *.ps
 *.pdf
 
+# Biber/biblatex temporary files
+*.bcf
+*.run.xml
+
 # Log file
 *.log

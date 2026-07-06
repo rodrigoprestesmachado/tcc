@@ -2,6 +2,23 @@
 % Autor: Rodrigo Prestes Machado
 % URL: https://github.com/rodrigoprestesmachado/tcc
 % Licença: CC0 1.0 Universal
+%
+% Normas ABNT consultadas na última atualização deste modelo (para dúvidas,
+% ver os links de rodapé espalhados pelo texto):
+%   - ABNT NBR 6022:2018 (confirmada em 2023) - Artigo científico
+%     https://www2.ufrb.edu.br/bcet/images/NBR_6022-2018.pdf
+%   - ABNT NBR 14724:2024 (versão corrigida 2025) - Trabalhos acadêmicos
+%     https://vigilanciasanitaria.prefeitura.rio/wp-content/uploads/sites/84/2025/10/ABNT-NBR-14724-2025-informacao-e-documentacao-trabalho-academico.pdf
+%   - ABNT NBR 10520:2023 - Citações em documentos
+%     https://coc.fiocruz.br/wp-content/uploads/2024/03/Abnt_nbr_10520_2023.pdf
+%   - ABNT NBR 6023:2025 - Referências
+%     https://www.eca.usp.br/sites/default/files/2025-06/NBR%206023_2025.pdf
+%   - ABNT NBR 6028:2021 - Resumo, resenha e recensão
+%     https://universidadeniltonlins.com.br/wp-content/uploads/2021/09/6028-Resumo-atualizada-em-18.05.2021-.pdf
+%   - Catálogo oficial da ABNT (compra/consulta institucional):
+%     https://www.abntcatalogo.com.br/
+%   - biblatex-abnt (estilo de citação/referência usado neste modelo):
+%     https://github.com/abntex/biblatex-abnt
 \documentclass[
 	article,			% indica que é um artigo acadêmico
 	11pt,				% tamanho da fonte
@@ -21,9 +38,17 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNTtushy
 \usepackage{fancyhdr}           % Pacote para cabeçalhos e rodapés
+
+% Citações e referências via biblatex-abnt (Biber), em conformidade com as
+% normas ABNT NBR 6023:2025 (referências) e ABNT NBR 10520:2023 (citações).
+% Documentação: https://github.com/abntex/biblatex-abnt
+\usepackage[backend=biber, style=abnt, backref=true]{biblatex}
+\addbibresource{referencias.bib}
+
+% ABNT NBR 10520:2023: o sobrenome do autor na citação não é mais exibido
+% em CAIXA ALTA, e sim em caixa alta/baixa (ex.: Silva, 2023).
+\renewcommand*{\mkbibnamefamily}[1]{#1}
 
 % Pacotes úteis
 \usepackage{tabularx}
@@ -54,9 +79,14 @@
 \end{center}
 
 \section*{Resumo}
-Parágrafo único, contendo no máximo 250 palavras acompanhado de 3 a 5
-palavras-chave, primeira letra maiúscula, separadas por ponto, escrita em
-Arial, 12 pt, espaçamento simples e parágrafo justificado.
+Parágrafo único, contendo entre 100 e 250 palavras\footnote{Limite de
+palavras conforme a ABNT NBR 6028:2021 (item 4.1.8, alínea b) para artigos de
+periódico. Norma completa em:
+\url{https://universidadeniltonlins.com.br/wp-content/uploads/2021/09/6028-Resumo-atualizada-em-18.05.2021-.pdf}}
+acompanhado de 3 a 5 palavras-chave, com inicial minúscula (exceto
+substantivos próprios e nomes científicos), separadas por ponto e vírgula e
+finalizadas por ponto, escrita em Arial, 12 pt, espaçamento simples e
+parágrafo justificado.
 
 \textcolor{blue}{
 Dicas: O resumo deve apresentar de forma clara o que foi feito, como foi feito e
@@ -73,7 +103,7 @@ evitando informações secundárias ou referências, garantindo que qualquer lei
 compreenda rapidamente a relevância do estudo.
 }
 
-\noindent\textbf{Palavras-Chave:} TCC, Latex, ABNT e IFRS.
+\noindent\textbf{Palavras-chave:} TCC; LaTeX; ABNT; IFRS.
 
 \section{Introdução}
 
@@ -82,8 +112,13 @@ O artigo deve possuir entre 7 (sete) e 10 (dez) páginas para o TCC1 e 10
 contagem. Os Anexos e os Apêndices não são contabilizados na contagem de
 páginas.
 
-O documento deve seguir as normas da ABNT vigentes: estar em tamanho A4, com
-formatação de margens superior e esquerda de 3cm e a inferior e direita 2cm.
+O documento deve seguir as normas da ABNT vigentes\footnote{Este modelo segue
+a ABNT NBR 6022:2018 (artigo científico) e a ABNT NBR 14724:2024 (trabalhos
+acadêmicos, no que se aplica a um artigo). Normas completas em:
+\url{https://www2.ufrb.edu.br/bcet/images/NBR_6022-2018.pdf} e
+\url{https://vigilanciasanitaria.prefeitura.rio/wp-content/uploads/sites/84/2025/10/ABNT-NBR-14724-2025-informacao-e-documentacao-trabalho-academico.pdf}}:
+estar em tamanho A4, com formatação de margens superior e esquerda de 3cm e a
+inferior e direita 2cm.
 
 \textcolor{blue}{
 Dicas: A Introdução deve convencer o leitor sobre a relevância do estudo,
@@ -107,7 +142,10 @@ O corpo do texto do artigo deve estar escrito em Arial, 12 pt, com espaçamento
 A revisão ortográfica e de normas da ABNT é de inteira responsabilidade dos
 autores do texto. As citações diretas com mais de 3 linhas serão digitadas em
 parágrafo isolado, com fonte Arial, 11 pt, espaçamento simples, parágrafo
-justificado e recuo de 4cm da margem esquerda.
+justificado e recuo de 4cm da margem esquerda\footnote{Pela ABNT NBR
+10520:2023, esse recuo de 4cm deixou de ser obrigatório e passou a ser uma
+recomendação, mantendo-se apenas o espaçamento simples e a fonte menor que a
+do texto.}.
 
 \begin{flushright}
     \begin{minipage}{0.8\textwidth}
@@ -121,7 +159,9 @@ parágrafo com a mesma configuração de fonte e espaçamento da citação desta
 \end{flushright}
 
 As citações diretas devem ter a indicação de autoria entre parênteses, em letras
-maiúsculas e minúsculas, conforme orienta a ABNT 10250/2023.
+maiúsculas e minúsculas, conforme orienta a ABNT NBR 10520:2023\footnote{Norma
+completa em:
+\url{https://coc.fiocruz.br/wp-content/uploads/2024/03/Abnt_nbr_10520_2023.pdf}}.
 
 As notas de rodapé devem ter numeração arábica sequencial (iniciando em 1) no
 decorrer do texto, fonte Arial, tamanho 10 pt, espaçamento simples e parágrafo
@@ -245,10 +285,8 @@ estudo \cite{Elsevier2025}.
 }
 
 % Referências
-\renewcommand{\bibname}{
-    \raggedright Referências\vspace{-1.5em}
-}
-\bibstyle{abntex2-alf}
-\bibliography{referencias}
+% Elaboradas conforme a ABNT NBR 6023:2025. Norma completa em:
+% https://www.eca.usp.br/sites/default/files/2025-06/NBR%206023_2025.pdf
+\printbibliography[title={Referências}]
 
 \end{document}
