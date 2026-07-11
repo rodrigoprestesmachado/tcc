@@ -1,22 +1,31 @@
-\ProvidesPackage{square}[2025/03/14 Pacote para Quadros ABNT]
+\ProvidesPackage{square}[2025/07/06 Pacote para Quadros ABNT]
 
-% Pacotes necessários
-\RequirePackage{graphicx, array, booktabs, caption, float}
+\RequirePackage{array, booktabs}
 
-% Criando um novo contador para Quadros (independente das tabelas)
 \newcounter{quadros}
-\renewcommand{\thequadros}{\arabic{quadros}} % Numeração sequencial simples
+\renewcommand{\thequadros}{\arabic{quadros}}
 
-% Criando o ambiente "quadro" com legenda apropriada
+\newcommand{\squarecaption}[1]{%
+  \ifdefined\ABNTEXfontereduzida
+    {\ABNTEXfontereduzida
+     Quadro~\thequadros\ABNTEXcaptiondelim#1}%
+  \else
+    {\footnotesize Quadro~\thequadros~--~#1}%
+  \fi
+}
+
+% Legenda centralizada acima do conteúdo (mesmo padrão de figuras/tabelas).
+% Centralize apenas a tabela com \centering no corpo do ambiente.
+% O conteúdo fica em uma minipage para não quebrar entre páginas.
 \newenvironment{square}[1][]{%
-    \refstepcounter{quadros} % Incrementa o contador de quadros
-    \vspace{0.5cm} % Distância vertical da borda superior do quadro
-    \noindent\hspace{2.4cm}{Quadro \thequadros} -- #1 % Define a legenda "Quadro X" com distância da borda
-    \vspace{0.2cm}
-    \vspace{-0.1cm}
-    \centering
+  \refstepcounter{quadros}%
+  \par\addvspace{\baselineskip}%
+  \noindent\begin{minipage}{\linewidth}%
+  {\centering\squarecaption{#1}\par}%
+  \addvspace{0.5\baselineskip}%
 }{%
-    \vspace{0.5cm}
+  \end{minipage}%
+  \par\addvspace{\baselineskip}%
 }
 
 \endinput

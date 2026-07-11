@@ -21,7 +21,7 @@
 %     https://github.com/abntex/biblatex-abnt
 \documentclass[
 	article,			% indica que é um artigo acadêmico
-	11pt,				% tamanho da fonte
+	12pt,				% tamanho da fonte (IFRS/ABNT: 12 pt no corpo do texto)
 	oneside,			% para impressão apenas no recto. Oposto a twoside
 	a4paper,			% tamanho do papel.
 	english,			% idioma adicional para hifenização
@@ -30,9 +30,12 @@
 ]{abntex2}
 
 % Pacotes básicos para esse template
-\usepackage{lmodern}			% Usa a fonte Latin Modern
+% Helvetica como substituto tipográfico da Arial (IFRS: Arial ou Times New Roman)
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\OnehalfSpacing					% Espaçamento 1,5 (memoir/abntex2; IFRS/ABNT)
 \usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
 \usepackage{nomencl} 			% Lista de simbolos
 \usepackage{color}				% Controle das cores
@@ -40,9 +43,19 @@
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{fancyhdr}           % Pacote para cabeçalhos e rodapés
 
+% Títulos de seção na mesma família do texto (Arial/Helvetica), em negrito
+\renewcommand{\ABNTEXsectionfont}{\sffamily\bfseries}
+\renewcommand{\ABNTEXsubsectionfont}{\sffamily\bfseries}
+\renewcommand{\ABNTEXsubsubsectionfont}{\sffamily\bfseries}
+
+% Legendas de figuras, tabelas e quadros em fonte 10 (IFRS/ABNT)
+\captionnamefont{\ABNTEXfontereduzida}
+\captiontitlefont{\ABNTEXfontereduzida}
+
 % Citações e referências via biblatex-abnt (Biber), em conformidade com as
 % normas ABNT NBR 6023:2025 (referências) e ABNT NBR 10520:2023 (citações).
 % Documentação: https://github.com/abntex/biblatex-abnt
+\usepackage{csquotes}			% Aspas conforme o idioma (recomendado pelo biblatex)
 \usepackage[backend=biber, style=abnt, backref=true]{biblatex}
 \addbibresource{referencias.bib}
 
@@ -65,13 +78,13 @@
 \pagestyle{fancy}
 
 \begin{center}
-    {\LARGE Título do Trabalho de Conslusão de Curso}\\[0.8cm]
-    {\large Trabalho de Conclusão do Curso}\\
+    {\LARGE Título do Trabalho de Conclusão de Curso}\\[0.8cm]
+    {\large Trabalho de Conclusão de Curso}\\
     {\large Tecnólogo em Sistemas para Internet}\\[1cm]
     {\large Nome do estudante}\\
-    Orientador(a): Nome do Coorientador\\
-    Coorientador(a): Nome do Orientador\\[0.8cm]
-    \textit{1 Instituto Federal de Educação, Ciência e Tecnologia do Rio
+    Orientador(a): Nome do Orientador\\
+    Coorientador(a): Nome do Coorientador\\[0.8cm]
+    \textit{Instituto Federal de Educação, Ciência e Tecnologia do Rio
     Grande do Sul (IFRS)\\
     Campus Porto Alegre\\
     Av Cel Vicente, 281, Porto Alegre – RS – Brasil}\\
@@ -79,6 +92,7 @@
 \end{center}
 
 \section*{Resumo}
+\begin{SingleSpace}
 Parágrafo único, contendo entre 100 e 250 palavras\footnote{Limite de
 palavras conforme a ABNT NBR 6028:2021 (item 4.1.8, alínea b) para artigos de
 periódico. Norma completa em:
@@ -87,6 +101,7 @@ acompanhado de 3 a 5 palavras-chave, com inicial minúscula (exceto
 substantivos próprios e nomes científicos), separadas por ponto e vírgula e
 finalizadas por ponto, escrita em Arial, 12 pt, espaçamento simples e
 parágrafo justificado.
+\end{SingleSpace}
 
 \textcolor{blue}{
 Dicas: O resumo deve apresentar de forma clara o que foi feito, como foi feito e
@@ -95,7 +110,7 @@ contextualizar o estudo, explicando sua motivação e a metodologia adotada. Em
 seguida, deve-se resumir os principais resultados, evidenciando a contribuição
 do trabalho. Por exemplo, um estudo pode ter desenvolvido um sistema Web para
 otimizar a gestão de estoque em pequenas empresas, utilizando uma arquitetura
-baseada em microserviços e banco de dados NoSQL. Os resultados devem ser
+baseada em microsserviços e banco de dados NoSQL. Os resultados devem ser
 apresentados de forma objetiva, demonstrando por meio de métricas como o sistema
 melhorou aspectos como escalabilidade, tempo de resposta ou eficiência no
 controle de produtos. O resumo deve ser conciso, informativo e bem estruturado,
@@ -141,22 +156,19 @@ O corpo do texto do artigo deve estar escrito em Arial, 12 pt, com espaçamento
 
 A revisão ortográfica e de normas da ABNT é de inteira responsabilidade dos
 autores do texto. As citações diretas com mais de 3 linhas serão digitadas em
-parágrafo isolado, com fonte Arial, 11 pt, espaçamento simples, parágrafo
+parágrafo isolado, com fonte Arial, 10 pt, espaçamento simples, parágrafo
 justificado e recuo de 4cm da margem esquerda\footnote{Pela ABNT NBR
 10520:2023, esse recuo de 4cm deixou de ser obrigatório e passou a ser uma
 recomendação, mantendo-se apenas o espaçamento simples e a fonte menor que a
 do texto.}.
 
-\begin{flushright}
-    \begin{minipage}{0.8\textwidth}
-\fontsize{10}{12}\selectfont
+\begin{citacao}
 As citações diretas destacadas do corpo do texto, com mais de três linhas,
 devem ser configuradas em Fonte Arial, Tamanho 10, espaçamento simples entre
 linhas e de 0,0 entre parágrafos, sem recuo no início dos parágrafos, mas com
 recuo de 4 cm à esquerda. Antes e depois da citação, deve haver um espaço de
 parágrafo com a mesma configuração de fonte e espaçamento da citação destacada.
-    \end{minipage}
-\end{flushright}
+\end{citacao}
 
 As citações diretas devem ter a indicação de autoria entre parênteses, em letras
 maiúsculas e minúsculas, conforme orienta a ABNT NBR 10520:2023\footnote{Norma
@@ -166,7 +178,7 @@ completa em:
 As notas de rodapé devem ter numeração arábica sequencial (iniciando em 1) no
 decorrer do texto, fonte Arial, tamanho 10 pt, espaçamento simples e parágrafo
 justificado. As notas de rodapé devem ser utilizadas apenas como elemento
-explicativo ou links para urls, e não para colocar referências de obras.
+explicativo ou links para URLs, e não para colocar referências de obras.
 
 Figuras devem ser inseridas no corpo do texto. Na Figura \ref{fig:figura} tem-se
 um exemplo de apresentação.
@@ -176,7 +188,7 @@ um exemplo de apresentação.
     \caption{Exemplo de Figura}
     \label{fig:figura}
     \includegraphics[width=0.4\textwidth]{imgs/fig.png}
-    \fonte{Fonte: Freepik (2025).}
+    \fonte{Freepik (2025).}
 \end{figure}
 
 As tabelas são confeccionadas com o objetivo de apresentar resultados numéricos
@@ -211,9 +223,10 @@ de apresentação.
 
 \begin{square}[Exemplo de quadro]
     \label{quad:quadro}
-    \renewcommand{\arraystretch}{1.2} % Aumenta o espaçamento entre linhas
-    \setlength{\tabcolsep}{10pt} % Ajusta o espaçamento entre colunas
-    \begin{tabular}{|l|c|}
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{10pt}
+    \begin{tabular}{|l|r|}
         \hline
         \textbf{Gênero Textual} & \textbf{Número de Livros} \\
         \hline
@@ -239,7 +252,7 @@ referencial deve seguir uma progressão lógica, do geral para o específico,
 demonstrando a lacuna na pesquisa e  justificando a relevância do estudo.
 }
 
-\section{Metologia}
+\section{Metodologia}
 
 \textcolor{blue}{
 Dicas: A Metodologia deve incluir o desenvolvimento do sistema, detalhando sua
@@ -273,7 +286,7 @@ pesquisas futuras, sempre com embasamento nos dados apresentados.
 \section{Considerações finais}
 
 \textcolor{blue}{
-Dias: As considerações finais devem destacar como o trabalho contribui para o
+Dicas: As considerações finais devem destacar como o trabalho contribui para o
 avanço do conhecimento na área, indo além da simples repetição do resumo ou
 listagem de resultados. Essa seção deve apresentar uma justificativa científica
 clara, indicando a relevância dos achados e suas possíveis aplicações ou
