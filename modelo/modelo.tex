@@ -58,9 +58,16 @@
 \renewcommand{\ABNTEXsubsubsectionfont}{\sffamily\mdseries}
 \renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
 
-% Legendas de figuras, tabelas e quadros em fonte 10 (IFRS/ABNT)
+% Legendas de figuras, tabelas e quadros em fonte 10 (IFRS/ABNT). Legendas e a
+% linha de "Fonte:" (via \fonte) que cabem em uma única linha são centralizadas
+% em relação à página -- o que as alinha visualmente com a figura/tabela/quadro,
+% já que estes também são centralizados com \centering. Apenas legendas que
+% ultrapassam uma linha (e por isso quebram) ficam alinhadas à esquerda da
+% margem do texto (singlelinecheck=true, padrão do pacote caption, é o que
+% viabiliza esse comportamento).
 \captionnamefont{\ABNTEXfontereduzida}
 \captiontitlefont{\ABNTEXfontereduzida}
+\captionsetup{justification=raggedright}
 
 % Citações e referências via biblatex-abnt (Biber), em conformidade com as
 % normas ABNT NBR 6023:2025 (referências) e ABNT NBR 10520:2023 (citações).
@@ -197,9 +204,9 @@ Figuras devem ser inseridas no corpo do texto. A seguir, na Figura
 
 \begin{figure}[h]
     \centering
+    \includegraphics[width=0.4\textwidth]{imgs/fig.png}
     \caption{Exemplo de figura}
     \label{fig:figura}
-    \includegraphics[width=0.4\textwidth]{imgs/fig.png}
     \fonte{Freepik (2025).}
 \end{figure}
 
@@ -316,6 +323,7 @@ garantindo uma síntese coerente e impactante do estudo \cite{Borja2021}.
 % Elaboradas conforme a ABNT NBR 6023:2025. Norma completa em:
 % https://www.eca.usp.br/sites/default/files/2025-06/NBR%206023_2025.pdf
 \nocite{Sommerville2011}
+\vspace{\baselineskip}
 \printbibliography[title={REFERÊNCIAS}]
 
 \noindent SOBRENOME DO AUTOR, Nome do autor. \textbf{Título do livro}:
@@ -345,6 +353,8 @@ VIGOR}.
 
 \begin{figure}[h]
     \centering
+    % Insira aqui a imagem do Anexo A, por exemplo:
+    % \includegraphics[width=0.6\textwidth]{imgs/anexoA.png}
     \caption*{Figura A1 -- Processo Scrum}
     \label{fig:anexoA}
     \fonte{Sommerville (2011).}
@@ -357,6 +367,8 @@ VIGOR}.
 
 \begin{figure}[h]
     \centering
+    % Insira aqui a imagem do Anexo B, por exemplo:
+    % \includegraphics[width=0.6\textwidth]{imgs/anexoB.png}
     \caption*{Figura B1 -- Processo de desenvolvimento de protótipo}
     \label{fig:anexoB}
     \fonte{Sommerville (2011).}
@@ -369,6 +381,8 @@ VIGOR}.
 
 \begin{figure}[h]
     \centering
+    % Insira aqui a imagem do Apêndice A (casos de uso de vendas), por exemplo:
+    % \includegraphics[width=0.6\textwidth]{imgs/apendiceA1.png}
     \caption*{Figura A1 -- Diagrama de casos de uso de vendas}
     \label{fig:apendiceA1}
     \fonte{Elaborado pelo Autor (2025).}
@@ -376,6 +390,8 @@ VIGOR}.
 
 \begin{figure}[h]
     \centering
+    % Insira aqui a imagem do Apêndice A (casos de uso de estoque), por exemplo:
+    % \includegraphics[width=0.6\textwidth]{imgs/apendiceA2.png}
     \caption*{Figura A2 -- Diagrama de casos de uso de estoque}
     \label{fig:apendiceA2}
     \fonte{Elaborado pelo Autor (2025).}
